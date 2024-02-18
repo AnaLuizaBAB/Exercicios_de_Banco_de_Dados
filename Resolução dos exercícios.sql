@@ -81,3 +81,25 @@ SELECT Continente,Nome AS 'País', Regiao, Populacao FROM pais
 WHERE Regiao = "América do Sul"
 ORDER BY Populacao DESC
 LIMIT 1;
+
+
+-- 9 
+
+SELECT  CODE, CODE2,  Continente, NOME FROM pais
+WHERE Continente = 'Asia';
+
+
+-- 10
+
+SELECT Code, Nome, Populacao, max(ExpectativaVida) AS 'Expectativa_de_Vida'FROM pais
+GROUP BY Code, Nome, Populacao
+ORDER BY Expectativa_de_Vida DESC
+LIMIT 1;
+
+
+-- 11
+
+SELECT Nome, Populacao, max(ExpectativaVida) AS 'Expectativa_de_vida' FROM pais
+GROUP BY Nome, Populacao HAVING Expectativa_de_vida > 0
+ORDER BY Expectativa_de_vida
+LIMIT 1;
