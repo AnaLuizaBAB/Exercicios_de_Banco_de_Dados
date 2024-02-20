@@ -103,3 +103,49 @@ SELECT Nome, Populacao, max(ExpectativaVida) AS 'Expectativa_de_vida' FROM pais
 GROUP BY Nome, Populacao HAVING Expectativa_de_vida > 0
 ORDER BY Expectativa_de_vida
 LIMIT 1;
+
+-- 12
+
+SELECT Code, Nome, AnoIndependencia FROM pais
+WHERE (1900 < AnoIndependencia) AND (AnoIndependencia < 1999)
+ORDER BY AnoIndependencia;
+
+
+-- 13
+
+SELECT Nome, Populacao, max(AreaSuperficie) AS "Área de Superficie" FROM pais
+GROUP BY Nome, Populacao
+ORDER BY  max(AreaSuperficie) DESC
+LIMIT 1;
+
+
+-- 14
+SELECT Nome, Continente, GNP FROM pais
+ORDER BY GNP DESC
+LIMIT 1;
+
+
+-- 15
+
+SELECT NOME, GNP FROM pais
+ORDER BY GNP DESC
+LIMIT 10;
+
+-- 16
+
+-- MENOR PAIS
+
+SELECT * FROM pais
+ORDER BY AreaSuperficie
+LIMIT 1;
+
+-- USANDO A CONSULTA A CIMA PARA CHEGAR A RESPOSTA DA QUESTÃO
+SELECT Nome, Populacao, ExpectativaVida FROM (SELECT * FROM pais
+ORDER BY AreaSuperficie
+LIMIT 1) X;
+
+             -- OU
+
+SELECT Nome, Populacao, ExpectativaVida, AreaSuperficie FROM pais
+ORDER BY AreaSuperficie
+LIMIT 1;
